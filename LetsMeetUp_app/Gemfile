@@ -43,6 +43,9 @@ gem 'yelp', require: 'yelp'
 
 #httparty
 gem 'httparty'
+
+#awesome-print THIS IS STUPID BUT KEEPS GIVING CONSOLE WARNINGS
+gem 'awesome_print'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
