@@ -7,3 +7,10 @@ var computeMid = function(loc1, loc2){
   var midPt = latMid + ", " + longMid;
   return midPt;
 }
+
+//RUBY
+def computeMid(loc1, loc2)
+  add1 = loc.split(" ,");
+  add2 = 
+
+end
