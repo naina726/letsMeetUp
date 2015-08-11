@@ -39,8 +39,10 @@ gem 'sendgrid'
 gem 'foursquare2'
 
 #yelp
-gem 'yelp'
+gem 'yelp', require: 'yelp'
 
+#httparty
+gem 'httparty'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
