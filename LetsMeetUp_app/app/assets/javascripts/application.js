@@ -16,6 +16,7 @@
 //= require underscore
 //= require backbone
 //= require handlebars
+//= require gmaps/google
 //= require_self
 //= require_tree ./backbone/routers
 //= require_tree ./backbone/models
