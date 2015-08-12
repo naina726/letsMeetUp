@@ -2,17 +2,17 @@ App.Views.FormView = Backbone.View.extend({
 	el: '#form',
 	initialize: function(){
 		console.log("RENDERING FORM VIEWZ");
-		this.template = HandlebarsTemplate["form"];
+		this.template = HandlebarsTemplates["form"];
 		console.log(this.template)
-		var compiled_html = this.template();
-		console.log(compiled_html);
+		// var compiled_html = this.template();
+		// console.log(compiled_html);
 
-
-		$(el).append( compiled_html)
+		// this.$(el).append( compiled_html);
+		this.render();
 	},
-
-
-
+	render: function() {
+		this.$el.html(this.template());
+	},
 	events: {
 		'click button': 'getInfoFromForm'
 	},
