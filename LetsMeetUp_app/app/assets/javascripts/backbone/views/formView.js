@@ -1,5 +1,5 @@
 App.Views.FormView = Backbone.View.extend({
-	el: '#form-view',
+	el: '#form',
 	initialize: function(){
 		console.log("RENDERING FORM VIEWZ");
 		this.template = HandlebarsTemplate["form"];

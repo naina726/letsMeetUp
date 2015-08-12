@@ -2,10 +2,12 @@
 <html>
 <head>
   <title>LetsMeetUpApp</title>
-  <title>LetsMeetUpApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  	<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=" + ENV['MAPS_KEY'] +"&callback=initMap">
+    </script>
 </head>
 
 </head>
@@ -19,13 +21,20 @@
 		<div id="flowLine2"></div>
 		<div id="flowLine3"></div>
 	</article>
+
 	<article id="about">
 		<div id="aboutTextBox">
 			<p><span>An easy way to make plans with people who are further away from you than you would like.<br>Find a place to meet in the middle!</p>
 		</div>
 	</article>
+
 	<article id="form"></article>
-	<article id="map"></article>
+	
+
+	<article id="holder">
+		<div id="map"></div>
+		<div id="listResults"></div>
+	</article>
 
 </body>
 </html>
