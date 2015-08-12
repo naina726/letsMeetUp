@@ -28,7 +28,7 @@ var App = {
 	Models: {}, 
 	Collections: {}, 
 	Views: {}, 
-	Routers: {}
+	Routers: {},
 	initialize: function(){
 		this.collection = new App.Collections.VenueCollection();
 		this.showForm = new App.Views.FormView();
