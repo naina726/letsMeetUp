@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+ @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
+
+ body{
+ 	font-family: 'Oswald', sans-serif;
+ 	font-weight: 400;
+ }
+ #main{
+
+ }
+ article #mainPhoto{
+ 	position: absolute;
+ 	right: 0px;
+ }
+ #about{
+
+ }
+ #form{
+
+ }
+ #map{
+
+ }
