@@ -11,8 +11,6 @@ App.Views.MapView = Backbone.View.extend({
 			this.map = new google.maps.Map(mapCanvas, mapOptions);
 	},
 	generateMarkers: function(data) {
-		
+		console.log("MAPVIEW GENERATE MARKERS YAY")	
 	}
-	//google.maps.event.addDomListener(window, 'load', initialize);
-
 });
