@@ -1,10 +1,21 @@
 require 'yelp' 
 class YELP
-  # Yelp.client.configure do |config|
-	 #  config.consumer_key = ENV["YELP_CONS_KEY"]
-	 #  config.consumer_secret = ENV["YELP_CONS_SECRET"]
-	 #  config.token = ENV["YELP_TOKEN"]
-	 #  config.token_secret = ENV["YELP_TOKEN_SECRET"]
-  # end
+
+	def self.search(lat1, long1, lat2, long2, activity)
+		avgLat = (lat1+lat2)/2
+		avgLong = (long1+long2)/2
+		coords = avgLat + " ," + avgLong
+
+		params = {
+			term: "activity"
+		}
+
+
+		query = JSON.parse(HTTParty.get(Yelp.client.search_by_coordinates(coords, params, locale)))
+	end
+
 
 end
+
+
+
