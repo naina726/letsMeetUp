@@ -35,7 +35,17 @@ App.Views.FormView = Backbone.View.extend({
            		var long2 = results[0].geometry.location.lng();
          	} 
 		});
-
 	}
 })
+//ajax post to search route in controller
+//send as data
+
+// $.ajax({
+// 	type: "POST",
+// 	url: '/whatever',
+// 	data: {long: whatever, lat: whatever },
+//}).done(function(data){
+	// App.mapView = new App.Views.MapView();
+	// App.mapView.generateMarkers(data);
+//})
 

@@ -5,8 +5,10 @@ class YelpsController < ApplicationController
 	end
 
 #THIS IS NOT LEGIT AT ALL 
-	def search(lat1, long1, lat2, long2, activity)
-		search_results = YELP.search(lat1, long1, lat2, long2, activity)
+	def search
+		longitude = params[:long]
+		YELP.search(longitude)
+		search_results = YELP.search(params)
 		#RENDER THE MAP AND LIST VIEWS
 	end
 end

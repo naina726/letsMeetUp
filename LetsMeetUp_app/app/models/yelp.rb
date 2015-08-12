@@ -9,7 +9,6 @@ class YELP
 		avgLong = (long1+long2)/2
 		p avgLong
 		coords = { latitude: avgLat, longitude: avgLong }
-		binding.pry
 
 		params = {
 			term: "activity"
@@ -17,6 +16,9 @@ class YELP
 
 
 		query = JSON.parse(HTTParty.get(Yelp.client.search_by_coordinates(coords, params, locale)))
+		#render list view
+		#render map view
+
 	end
 
 

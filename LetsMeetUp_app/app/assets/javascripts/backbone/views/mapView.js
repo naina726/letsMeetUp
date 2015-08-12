@@ -8,8 +8,11 @@ App.Views.MapView = Backbone.View.extend({
 				zoom: 8,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
-			var map = new google.maps.Map(mapCanvas, mapOptions);
+			this.map = new google.maps.Map(mapCanvas, mapOptions);
 	},
-	google.maps.event.addDomListener(window, 'load', initialize);
+	generateMarkers: function(data) {
+		
+	}
+	//google.maps.event.addDomListener(window, 'load', initialize);
 
 });
