@@ -13,21 +13,75 @@
  *= require_tree .
  *= require_self
  */
- @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
  body{
- 	font-family: 'Oswald', sans-serif;
- 	font-weight: 400;
+ 	font-family: 'Montserrat', sans-serif;
+ 	background-color: #FFECB3;
  }
  #main{
 
  }
- article #mainPhoto{
+ #main img{
  	position: absolute;
  	right: 0px;
+ 	top: 0px;
  }
- #about{
-
+ #h1circle{
+ 	position: absolute;
+ 	left: 60px;
+ 	top: 60px;
+ 	height: 400px;
+ 	width: 400px;
+ 	border-radius: 300px;
+ 	background-color: #F44336;
+ 	z-index: 6;
+ 	-webkit-box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.3);
+ }
+ #main h1{
+ 	position: relative;
+ 	top: 20px;
+ 	font-weight: 400;
+ 	font-size: 80px;
+ 	color: white;
+ 	text-align: center;
+ }
+ #flowLine{
+ 	position: absolute;
+ 	text-align: center;
+ 	height: 855px;
+ 	width: 10px;
+ 	background-color: #F44336;
+ 	left: 250px;
+ 	top: 450px;
+ 	z-index: 5;
+ 	-webkit-box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.3);
+ }
+ #aboutTextBox{
+ 	position: relative;
+ 	background-color: #F44336;
+ 	top: 755px;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	height: 450px;
+ 	width: 800px;
+ 	opacity: 10%;
+ 	z-index: 8;
+ 	-webkit-box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.3);
+ }
+ #aboutTextBox p{
+ 	position: relative;
+ 	font-weight: 400px;
+ 	font-size: 48px;
+ 	text-align: center;
+ 	color: white;
+ 	padding: 50px 50px 50px 50px;
  }
  #form{
 

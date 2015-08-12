@@ -2,19 +2,30 @@
 <html>
 <head>
   <title>LetsMeetUpApp</title>
+  <title>LetsMeetUpApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
+</head>
 <body>
 	<article id="main">
-		<a id = "mainPhoto" href="http://imgur.com/C08aJNL"><img src="http://i.imgur.com/C08aJNL.png?1" title="source: imgur.com" /></a>
+		<a href="http://imgur.com/hNn0obV"><img src="http://i.imgur.com/hNn0obV.png?1" title="source: imgur.com" /></a>
+		<div id='h1circle'>
+		<h1>LET'S<br>MEET!</h1>
+		</div>
+		<div id="flowLine"></div>
+		<div id="flowLine2"></div>
+		<div id="flowLine3"></div>
 	</article>
-	<article id="about"></article>
+	<article id="about">
+		<div id="aboutTextBox">
+			<p><span>An easy way to make plans with people who are further away from you than you would like.<br>Find a place to meet in the middle!</p>
+		</div>
+	</article>
 	<article id="form"></article>
 	<article id="map"></article>
-
-<%= yield %>
 
 </body>
 </html>

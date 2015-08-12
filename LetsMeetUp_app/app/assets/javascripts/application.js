@@ -16,6 +16,7 @@
 //= require underscore
 //= require backbone
 //= require handlebars
+//= require gmaps/google
 //= require_self
 //= require_tree ./backbone/routers
 //= require_tree ./backbone/models
@@ -28,4 +29,12 @@ var App = {
 	Collections: {}, 
 	Views: {}, 
 	Routers: {}
+	initialize: function(){
+		this.collection = new App.Collections.VenueCollection();
+		this.showForm = new App.Views.FormView();
+	}
 };
+
+$(function(){
+	App.initialize();
+})
