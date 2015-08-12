@@ -29,4 +29,12 @@ var App = {
 	Collections: {}, 
 	Views: {}, 
 	Routers: {}
+	initialize: function(){
+		this.collection = new App.Collections.VenueCollection();
+		this.showForm = new App.Views.FormView();
+	}
 };
+
+$(function(){
+	App.initialize();
+})

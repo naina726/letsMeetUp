@@ -2,9 +2,11 @@ require 'yelp'
 class YELP
 
 	def self.search(lat1, long1, lat2, long2, activity)
+		#COMPUTE MIDPOINT OF LOCATIONS
 		avgLat = (lat1+lat2)/2
 		avgLong = (long1+long2)/2
-		coords = avgLat + " ," + avgLong
+		coords = { latitude: avgLat, longitude: avgLong }
+
 
 		params = {
 			term: "activity"
