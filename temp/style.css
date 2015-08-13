@@ -89,34 +89,44 @@
 
  }
 #addressOne {
-  margin: 5px 5px 5px 5px;
-  padding: 15px 15px 15px 15px;
-  font-size: 14px;
-  border: solid 5px #c9c9c9;
-  background-color: white;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+	width: 250px;
+	height: 20px;
+	margin: 5px 5px 5px 5px;
+	padding: 15px 15px 15px 15px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	border: solid 5px #c9c9c9;
+	background-color: white;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 #addressTwo {
-  padding: 15px 15px 15px 15px;
-  font-size: 14px;
-  border: solid 5px #c9c9c9;
-  background-color: white;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+	width: 250px;
+	height: 20px;
+	padding: 15px 15px 15px 15px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	border: solid 5px #c9c9c9;
+	background-color: white;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 #searchActivity {
-  padding: 10px 10px 10px 10px;
-  font-size: 14px;
-  border: solid 5px #c9c9c9;
-  background-color: white;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+	height: 20px;
+	margin: 5px 5px 5px 5px;
+	padding: 15px 15px 15px 15px;
+	font-size: 14px;
+	font-family: 'Montserrat', sans-serif;
+	border: solid 5px #c9c9c9;
+	background-color: white;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 #submit{
+	margin: 20px 20px 20px 20px;
 	font-weight: 400;
 	font-size: 16px;
 	background-color: #03A9F4;
