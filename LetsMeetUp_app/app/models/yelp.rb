@@ -4,25 +4,27 @@ class YELP
 
 	def self.search(lat1, long1, lat2, long2, activity)
 		#COMPUTE MIDPOINT OF LOCATIONS
-		avgLat = (lat1+lat2)/2
-		p avgLat
-		avgLong = (long1+long2)/2
-		p avgLong
+		avgLat = ((lat1+lat2)/2)
+		puts avgLat
+		avgLong = ((long1+long2)/2)
+		puts avgLong
+
 		coords = { latitude: avgLat, longitude: avgLong }
+		params = { term: activity, limit: 5 }
+		locale = { lang: 'en' }
 
-		params = {
-			term: "activity"
-		}
+		query = Yelp.client.search_by_coordinates(coords, params, locale)
+		puts query
 
+		#ALTERNATE OPTION - TEST THIS
+		queryJSONPARSE = JSON.parse(query)
+		puts queryJSONPARSE
 
-		query = JSON.parse(HTTParty.get(Yelp.client.search_by_coordinates(coords, params, locale)))
-		#render list view
-		#render map view
+		#ALTERNATE OPTION - TEST THIS
+		queryToJSON = query.toJSON()
+		puts queryToJSON
 
 	end
 
 
 end
-
-
-

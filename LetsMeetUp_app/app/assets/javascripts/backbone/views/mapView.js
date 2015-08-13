@@ -11,8 +11,16 @@ App.Views.MapView = Backbone.View.extend({
 			this.map = new google.maps.Map(mapCanvas, mapOptions);
 	},
 	generateMarkers: function(data) {
-		
+		console.log("MAPVIEW GENERATE MARKERS YAY")	
+	},
+	events: {
+		'click #option1': 'viewFirst'
+		//jQuery event on div that has been clicked
+	},
+	viewFirst = function(){
+		//slide down to show more information for 
+		//first option from list 
+		//and highlight pin on map
 	}
-	//google.maps.event.addDomListener(window, 'load', initialize);
 
 });

@@ -1,14 +1,16 @@
 class YelpsController < ApplicationController
-
-	def index
-		render layout: 'application', text: ''
-	end
-
-#THIS IS NOT LEGIT AT ALL 
 	def search
-		longitude = params[:long]
-		YELP.search(longitude)
-		search_results = YELP.search(params)
-		#RENDER THE MAP AND LIST VIEWS
+		#GETTING PARAMS FROM INTERNALSEARCH IN FORMVIEW
+		lat1 = params[:lat1]
+		long1 = params[:long1]
+		lat2 = params[:lat2]
+		long2 = params[:long2]
+		activity = params[:activity]
+
+		search_results = YELP.search(lat1, long1, lat2, long2, activity)
+		#SENDING TO YELP.RB TO USE GEM, 
+		#RETURNS HERE, AND RETURNS JSON TO
+		#INTERNALSEARCH IN FORMVIEW --- THEN CALLS
+		#MAPVIEW INITIALIZER AND GENERATEMARKERS FXN 
 	end
 end
