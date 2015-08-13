@@ -1,9 +1,4 @@
 class YelpsController < ApplicationController
-
-	def index
-		render layout: 'application', text: ''
-	end
-
 	def search
 		#GETTING PARAMS FROM INTERNALSEARCH IN FORMVIEW
 		lat1 = params[:lat1]

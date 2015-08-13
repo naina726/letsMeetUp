@@ -12,5 +12,15 @@ App.Views.MapView = Backbone.View.extend({
 	},
 	generateMarkers: function(data) {
 		console.log("MAPVIEW GENERATE MARKERS YAY")	
+	},
+	events: {
+		'click #option1': 'viewFirst'
+		//jQuery event on div that has been clicked
+	},
+	viewFirst = function(){
+		//slide down to show more information for 
+		//first option from list 
+		//and highlight pin on map
 	}
+
 });
