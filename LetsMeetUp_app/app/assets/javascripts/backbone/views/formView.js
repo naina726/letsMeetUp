@@ -54,8 +54,9 @@ App.Views.FormView = Backbone.View.extend({
             }
         }).done(function(results){
             App.mapView = new App.Views.MapView();
-            App.mapView.generateMarkers(data, results);
             App.listView = new App.Views.ListView();
+            App.mapView.generateMap(data, results);
+            App.mapView.generateMarkers(data, results);
             App.listView.generateList(results);
             //ALSO INITIALIZE LISTVIEW
         })
