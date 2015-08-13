@@ -3,9 +3,8 @@
  body{
  	font-family: 'Montserrat', sans-serif;
  	background-color: #FFECB3;
- }
- #main{
-
+ 	width: 1150px;
+ 	margin: 0 auto;
  }
  #main img{
  	position: absolute;
@@ -138,8 +137,23 @@
 	-moz-box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
 }
-@media screen and (max-width:1600px){
+#listResults{
+	height: 70px;
+	width: 150px;
+	background-color: #f4f4f4;
+	-webkit-box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
+
+}
+@media screen and (min-width:1200px){
 	#aboutTextBox{
 		width: 80%;
+		height: 350px;
+	}
+	#form{
+		width: 80%;
+		height: 350px;
 	}
 }
+
