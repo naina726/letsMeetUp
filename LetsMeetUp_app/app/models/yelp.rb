@@ -24,6 +24,9 @@ class YELP
 
 		query = Yelp.client.search_by_coordinates(coords, params, locale)
 		puts query
+
+
+		
 		binding.pry
 		#ALTERNATE OPTION - TEST THIS
 		queryJSONPARSE = JSON.parse(query)
