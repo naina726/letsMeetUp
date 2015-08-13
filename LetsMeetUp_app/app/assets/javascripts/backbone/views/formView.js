@@ -19,21 +19,28 @@ App.Views.FormView = Backbone.View.extend({
 
         var geocoder1 = new google.maps.Geocoder();
         geocoder1.geocode( { 'address': add1}, function(results, status) {
+        	console.log("FIRST" + results);
             if (status == google.maps.GeocoderStatus.OK) {
-                   lat1 = results[0].geometry.location.lat();
-                   long1 = results[0].geometry.location.lng();
+                   this.lat1 = results[0].geometry.location.lat();
+                   this.long1 = results[0].geometry.location.lng();
              } 
         });
         var geocoder2 = new google.maps.Geocoder();
         geocoder2.geocode( { 'address': add2}, function(results, status) {
+        	console.log(results);
             if (status == google.maps.GeocoderStatus.OK) {
                    this.lat2 = results[0].geometry.location.lat();
                    this.long2 = results[0].geometry.location.lng();
              } 
         });
-        console.log(this.lat1 + "     " + this.long1);
 
-        this.internalSearch();
+        setTimeout(function(){ 
+        	console.log(this.lat1 + "     " + this.long1);
+			console.log("SECOND THING " + this.lat2 + "     " + this.long2);
+         }, 1000);
+        setTimeout(this.internalSearch(), 1100);
+
+        
     },
     internalSearch: function(){
         //ajax post to search route in controller
@@ -47,9 +54,9 @@ App.Views.FormView = Backbone.View.extend({
                 long2: this.long2,
                 activity: this.activity
             }
-        }).done(function(data){
+        }).done(function(results){
             App.mapView = new App.Views.MapView();
-            App.mapView.generateMarkers(data);
+            App.mapView.generateMarkers(data, results);
             //ALSO INITIALIZE LISTVIEW
         })
     }
