@@ -36,7 +36,7 @@
  #flowLine{
  	position: absolute;
  	text-align: center;
- 	height: 855px;
+ 	height: 1555px;
  	width: 10px;
  	background-color: #F44336;
  	left: 250px;
@@ -54,8 +54,8 @@
  	margin-right: auto;
  	height: 450px;
  	width: 800px;
- 	opacity: 10%;
  	z-index: 8;
+ 	border-radius: 5px;
  	-webkit-box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.3);
 	-moz-box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.3);
 	box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.3);
@@ -69,8 +69,63 @@
  	padding: 50px 50px 50px 50px;
  }
  #form{
+ 	position: relative;
+ 	font-weight: 400px;
+ 	font-size: 36px;
+ 	padding-top: 5px;
+ 	text-align: center;
+ 	color: white;
+ 	background-color: #FFC107;
+ 	top: 955px;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	height: 450px;
+ 	width: 800px;
+ 	z-index: 8;
+ 	border-radius: 5px;
+ 	-webkit-box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 30px 10px rgba(0,0,0,0.3);
 
  }
- #map{
+#addressOne {
+  margin: 5px 5px 5px 5px;
+  padding: 15px 15px 15px 15px;
+  font-size: 14px;
+  border: solid 5px #c9c9c9;
+  background-color: white;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+#addressTwo {
+  padding: 15px 15px 15px 15px;
+  font-size: 14px;
+  border: solid 5px #c9c9c9;
+  background-color: white;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+#searchActivity {
+  padding: 10px 10px 10px 10px;
+  font-size: 14px;
+  border: solid 5px #c9c9c9;
+  background-color: white;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+#submit{
+	font-weight: 400;
+	font-size: 16px;
+	background-color: #03A9F4;
+	padding: 15px 15px 15px 15px;
+	border-radius: 5px;
+	border: solid 0px #c9c9c9;
+	color: white;
+	-webkit-box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
+}
 
- }
