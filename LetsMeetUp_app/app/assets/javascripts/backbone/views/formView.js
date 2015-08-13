@@ -23,7 +23,6 @@ App.Views.FormView = Backbone.View.extend({
         var geocoder1 = new google.maps.Geocoder();
         geocoder1.geocode( { 'address': add1}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
-                    debugger;
                    this.lat1 = results[0].geometry.location.lat();
                    this.long1 = results[0].geometry.location.lng();
              } 
@@ -38,11 +37,10 @@ App.Views.FormView = Backbone.View.extend({
 
         //THIS IS A JANKY DUCT TAPE FIX BUT IT SOLVES THE
         //ASYNCH PROBLEM/IS MINIMAL
-        setTimeout(function(){self.internalSearch()}, 300);
+        setTimeout(function(){self.internalSearch()}, 1000);
     },
     internalSearch: function(){
         //ajax post to search route in controller
-        debugger;
         console.log("HELLLLOOOOOOOOOOO INTERNAL SEARCH  " + this.lat1 + "  ugh")
         $.ajax({
             type: "POST",

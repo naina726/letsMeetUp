@@ -11,7 +11,7 @@ class YELP
 
 		#COMPUTE MIDPOINT OF LOCATIONS
 		puts lat1
-		binding.pry
+
 
 
 
@@ -23,7 +23,7 @@ class YELP
 		coords = { latitude: avgLat, longitude: avgLong }
 		params = { term: activity, limit: 5 }
 		locale = { lang: 'en' }
-
+		binding.pry
 		query = Yelp.client.search_by_coordinates(coords, params, locale)
 		puts query
 
