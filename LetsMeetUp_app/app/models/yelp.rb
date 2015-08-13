@@ -36,6 +36,4 @@ class YELP
 		puts queryToJSON
 
 	end
-
-
 end
