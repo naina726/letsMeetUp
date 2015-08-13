@@ -1,5 +1,10 @@
 App.Views.FormView = Backbone.View.extend({
     el: '#form',
+    lat1: "",
+    long1: "",
+    lat2: "",
+    long2: "",
+
     initialize: function(){
         console.log("RENDERING FORM VIEWZ");
         this.template = HandlebarsTemplates["form"];
@@ -19,7 +24,6 @@ App.Views.FormView = Backbone.View.extend({
 
         var geocoder1 = new google.maps.Geocoder();
         geocoder1.geocode( { 'address': add1}, function(results, status) {
-        	console.log("FIRST" + results);
             if (status == google.maps.GeocoderStatus.OK) {
                    this.lat1 = results[0].geometry.location.lat();
                    this.long1 = results[0].geometry.location.lng();
@@ -27,7 +31,6 @@ App.Views.FormView = Backbone.View.extend({
         });
         var geocoder2 = new google.maps.Geocoder();
         geocoder2.geocode( { 'address': add2}, function(results, status) {
-        	console.log(results);
             if (status == google.maps.GeocoderStatus.OK) {
                    this.lat2 = results[0].geometry.location.lat();
                    this.long2 = results[0].geometry.location.lng();
@@ -39,11 +42,11 @@ App.Views.FormView = Backbone.View.extend({
 			console.log("SECOND THING " + this.lat2 + "     " + this.long2);
          }, 1000);
         setTimeout(this.internalSearch(), 1100);
-
-        
     },
     internalSearch: function(){
         //ajax post to search route in controller
+        console.log("HELLLLOOOOOOOOOOO INTERNAL SEARCH")
+        console.log(this.lat1)
         $.ajax({
             type: "POST",
             url: 'yelps/search',
