@@ -7,6 +7,10 @@ class YelpsController < ApplicationController
 		long2 = params[:long2]
 		activity = params[:activity]
 
+		puts "!!!!!!!!!!!!!!!!!!!!!!!!"
+		puts lat1
+		puts long2 
+		puts "!!!!!!!!!!!!!!!!!!!!!!!!"
 		search_results = YELP.search(lat1, long1, lat2, long2, activity)
 		#SENDING TO YELP.RB TO USE GEM, 
 		#RETURNS HERE, AND RETURNS JSON TO
