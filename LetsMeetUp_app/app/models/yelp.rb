@@ -1,5 +1,6 @@
 require 'yelp' 
 require 'pry'
+require 'json'
 class YELP
 
 	def self.search(lat1, long1, lat2, long2, activity)
@@ -19,22 +20,14 @@ class YELP
 		puts avgLong
 
 		coords = { latitude: avgLat, longitude: avgLong }
-		params = { term: activity, limit: 5 }
+		params = { term: activity, limit: 5, radius_filter: 400 }
 		locale = { lang: 'en' }
 
 		query = Yelp.client.search_by_coordinates(coords, params, locale)
-		puts query
-
-
-		
-		binding.pry
-		#ALTERNATE OPTION - TEST THIS
-		queryJSONPARSE = JSON.parse(query)
-		puts queryJSONPARSE
-
-		#ALTERNATE OPTION - TEST THIS
-		queryToJSON = query.toJSON()
-		puts queryToJSON
+		queryJSON = query.to_json
+		puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n"
+		puts queryJSON
+		puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n"
 
 	end
 end
