@@ -1,5 +1,6 @@
 class YelpsController < ApplicationController
 	def search
+		binding.pry
 		#GETTING PARAMS FROM INTERNALSEARCH IN FORMVIEW
 		lat1 = params[:lat1]
 		long1 = params[:long1]
