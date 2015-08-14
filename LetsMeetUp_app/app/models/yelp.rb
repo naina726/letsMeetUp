@@ -25,9 +25,9 @@ class YELP
 
 		query = Yelp.client.search_by_coordinates(coords, params, locale)
 		queryJSON = query.to_json
-		puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n"
-		puts queryJSON
-		puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n"
-
+		# puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n"
+		# puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n"
+		# puts queryJSON
+		return queryJSON
 	end
 end
