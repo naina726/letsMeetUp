@@ -32,6 +32,7 @@ var App = {
 	initialize: function(){
 		this.collection = new App.Collections.VenueCollection();
 		this.showForm = new App.Views.FormView();
+		this.mapView = new App.Views.MapView();
 	}
 };
 

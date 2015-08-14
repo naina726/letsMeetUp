@@ -40,6 +40,9 @@ App.Views.FormView = Backbone.View.extend({
     internalSearch: function(){
         //ajax post to search route in controller
         console.log("INTERNAL SEARCH  " + this.lat1 + " " + this.lat2);
+        
+        App.mapView.storeShit(this.lat1, this.long1, this.lat2, this.long2);
+
         var data = {
         	lat1: this.lat1,
             long1: this.long1,
@@ -48,38 +51,46 @@ App.Views.FormView = Backbone.View.extend({
             activity: this.activity,
             radius: 400
         };
-        $.ajax({
-        	method: 'POST',
-        	url:'/yelps/search', 
-        	data: data
-        	}).success(function(queryJSON) {
-        			console.log(queryJSON);
-                    //SECOND AJAX POST IF TOTAL RESULTS = 0
-                    if (queryJSON.total < 5){
-                        data.radius = 600;
-                        $.ajax({
-                            method: 'POST',
-                            url:'/yelps/search', 
-                            data: data
-                        }).success(function(queryJSON){
-                            //THIRD AJAX CALL
-                            if (queryJSON.total < 5){
-                                data.radius = 1200;
-                                $.ajax({
-                                    method: 'POST',
-                                    url:'/yelps/search', 
-                                    data: data
-                                }).success(function(queryJSON){
-                                    console.log(queryJSON)
-                                }).fail(function(){ alert("NOOOOOOOO"); });
-                            }
-                            //END THIRD CALL
-                        }).fail(function(){ alert("NOOOOOOOO"); })
-                    }
-                    //END SECOND POST
-        	}).fail(function() { console.log('failure'); 
-        });
-    }
 
+        App.collection.fetch({
+            url: 'yelps/search',
+            data: data
+        });
+
+        setTimeout(function(){App.mapView.getAvg()}, 500);
+
+        
+    }
 })
 
+// $.ajax({
+// 	method: 'POST',
+// 	url:'/yelps/search', 
+// 	data: data
+// 	}).success(function(queryJSON) {
+// 			console.log(queryJSON);
+//             //SECOND AJAX POST IF TOTAL RESULTS = 0
+//             if (queryJSON.total < 5){
+//                 data.radius = 600;
+//                 $.ajax({
+//                     method: 'POST',
+//                     url:'/yelps/search', 
+//                     data: data
+//                 }).success(function(queryJSON){
+//                     //THIRD AJAX CALL
+//                     if (queryJSON.total < 5){
+//                         data.radius = 1200;
+//                         $.ajax({
+//                             method: 'POST',
+//                             url:'/yelps/search', 
+//                             data: data
+//                         }).success(function(queryJSON){
+//                             console.log(queryJSON)
+//                         }).fail(function(){ alert("NOOOOOOOO"); });
+//                     }
+//                     //END THIRD CALL
+//                 }).fail(function(){ alert("NOOOOOOOO"); })
+//             }
+//             //END SECOND POST
+// 	}).fail(function() { console.log('failure'); 
+// });

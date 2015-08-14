@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   root to: 'application#index'
-  post '/yelps/search' => 'yelps#search'
-
+  get '/yelps/search' => 'yelps#search'
+  post '/yelps/midpoint' => 'yelps#midpoint'
 end

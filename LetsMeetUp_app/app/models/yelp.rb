@@ -12,23 +12,29 @@ class YELP
 		radius = radius
 
 		#COMPUTE MIDPOINT OF LOCATIONS
-		puts lat1
-		puts "!!!!!!!!!!!"
-
 		avgLat = (((lat1.to_f)+(lat2.to_f))/2)
-		puts avgLat
 		avgLong = (((long1.to_f)+(long2.to_f))/2)
-		puts avgLong
 
 		coords = { latitude: avgLat, longitude: avgLong }
 		params = { term: activity, limit: 5, radius_filter: radius, sort: 2 }
 		locale = { lang: 'en' }
 
 		query = Yelp.client.search_by_coordinates(coords, params, locale)
-		queryJSON = query.to_json
-		puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n"
-		puts queryJSON
-		puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n"
-		return queryJSON
+		if (query.total < 5)
+			params[:radius_filter] = 600
+			query = Yelp.client.search_by_coordinates(coords, params, locale)
+		end 
+
+		if (query.total < 5)
+			params[:radius_filter] = 1200
+			query = Yelp.client.search_by_coordinates(coords, params, locale)
+		end 
+
+		if (query.total == 0)
+			p "NOTHING FOUND"
+		end
+		
+		return query
+		
 	end
 end
