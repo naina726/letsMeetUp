@@ -2,15 +2,23 @@ App.Views.MapView = Backbone.View.extend({
 	el: 'map',
 	initialize: function() {
 		console.log("NEW Map VIEW CREATED");
-			var mapCanvas = $('#map');
-			var mapOptions = {
-				center: new google.maps.LatLng(44.5403, -78.5463),
-				zoom: 8,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-			};
-			this.map = new google.maps.Map(mapCanvas, mapOptions);
 	},
-	generateMarkers: function(data, results) {
+	generateMap: function(results){
+		this.results = results;
+		debugger;
+		var mapCanvas = $('#map');
+		var mapOptions = {
+			center: new google.maps.LatLng(results.region.center.latitude, results.region.center.longitude),
+
+			zoom: 8,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		this.map = new google.maps.Map(mapCanvas, mapOptions);
+		var transitLayer = new google.maps.TransitLayer();
+  		transitLayer.setMap(map);
+
+	},
+	generateMarkers: function(lat1, long1, lat2, long2, results) {
 		console.log("MAPVIEW GENERATE MARKERS YAY")	
 	},
 	events: {

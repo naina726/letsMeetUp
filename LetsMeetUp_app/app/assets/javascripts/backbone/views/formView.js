@@ -41,24 +41,45 @@ App.Views.FormView = Backbone.View.extend({
     },
     internalSearch: function(){
         //ajax post to search route in controller
-        console.log("HELLLLOOOOOOOOOOO INTERNAL SEARCH  " + this.lat1 + "  ugh")
+        console.log("HELLLLOOOOOOOOOOO INTERNAL SEARCH  " + this.lat1 + " " + this.lat2);
+        var data = {
+        	lat1: this.lat1,
+            long1: this.long1,
+            lat2: this.lat2,
+            long2: this.long2,
+            activity: this.activity
+        };
         $.ajax({
-            type: "POST",
-            url: '/yelps/search',
-            data: {
-                lat1: this.lat1,
-                long1: this.long1,
-                lat2: this.lat2,
-                long2: this.long2,
-                activity: this.activity
-            }
-        }).done(function(results){
-            App.mapView = new App.Views.MapView();
-            App.mapView.generateMarkers(data, results);
-            App.listView = new App.Views.ListView();
-            App.listView.generateList(results);
-            //ALSO INITIALIZE LISTVIEW
-        })
+        	method: 'POST',
+        	url:'/yelps/search', 
+        	data: data
+        	}).success(function(queryJSON) {
+        			console.log(queryJSON);
+        			console.log("HALLO GUYS")
+        }).fail(function() {
+        	console.log('failure');
+        });
+
+        // $.ajax({
+        //     type: "POST",
+        //     url: '/yelps/search',
+        //     data: {
+        //         lat1: this.lat1,
+        //         long1: this.long1,
+        //         lat2: this.lat2,
+        //         long2: this.long2,
+        //         activity: this.activity
+        //     }
+        // }).success(function(results){
+        // 	console.log("query successful, FORM VIEW");
+        // 	console.log(results);
+        //     App.mapView = new App.Views.MapView();
+        //     App.listView = new App.Views.ListView();
+        //     App.mapView.generateMap(results);
+        //     App.mapView.generateMarkers(this.lat1, this.long1, this.lat2, this.long2, results);
+        //     App.listView.generateList(results);
+        //     //ALSO INITIALIZE LISTVIEW
+        // })
         /*
         .fail(function(){
             alert("Invalid Location")
