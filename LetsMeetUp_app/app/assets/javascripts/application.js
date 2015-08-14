@@ -35,6 +35,7 @@ var App = {
 		$("#holder").hide();
 		this.mapView = new App.Views.MapView();
 		this.listView = new App.Views.ListView();
+		this.mapView.generateMap();
 	}
 };
 

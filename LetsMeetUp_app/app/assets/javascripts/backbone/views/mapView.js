@@ -29,14 +29,14 @@ App.Views.MapView = Backbone.View.extend({
         	alert("something is wrong")
         })
        
-        setTimeout(function(){self.generateMap()}, 200);
+        setTimeout(function(){self.generateMarkers()}, 200);
 
 	},
 	generateMap: function(){
 		var self = this;
 		var mapCanvas = $('#map')[0];
 		var mapOptions = {
-			center: new google.maps.LatLng(self.avgLat, self.avgLong),
+			center: new google.maps.LatLng(40.7398850, -73.9900820),
 			zoom: 8,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
