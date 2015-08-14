@@ -20,14 +20,14 @@ class YELP
 		puts avgLong
 
 		coords = { latitude: avgLat, longitude: avgLong }
-		params = { term: activity, limit: 5, radius_filter: 400 }
+		params = { term: activity, limit: 5, radius_filter: 400, sort: 2 }
 		locale = { lang: 'en' }
 
 		query = Yelp.client.search_by_coordinates(coords, params, locale)
 		queryJSON = query.to_json
-		# puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n"
-		# puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n"
-		# puts queryJSON
+		puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n"
+		puts queryJSON
+		puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n"
 		return queryJSON
 	end
 end

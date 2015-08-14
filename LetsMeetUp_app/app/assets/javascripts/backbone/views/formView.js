@@ -55,9 +55,9 @@ App.Views.FormView = Backbone.View.extend({
         	data: data
         	}).success(function(queryJSON) {
         			console.log(queryJSON);
-        			console.log("HALLO GUYS")
-        }).fail(function() {
-        	console.log('failure');
+        			console.log("HALLO GUYS");
+        	}).fail(function() {
+        		console.log('failure');
         });
 
         // $.ajax({
