@@ -1,7 +1,5 @@
 App.Views.FormView = Backbone.View.extend({
     el: '#form',
-
-
     initialize: function(){
         console.log("RENDERING FORM VIEWZ");
         this.template = HandlebarsTemplates["form"];
@@ -41,13 +39,14 @@ App.Views.FormView = Backbone.View.extend({
     },
     internalSearch: function(){
         //ajax post to search route in controller
-        console.log("HELLLLOOOOOOOOOOO INTERNAL SEARCH  " + this.lat1 + " " + this.lat2);
+        console.log("INTERNAL SEARCH  " + this.lat1 + " " + this.lat2);
         var data = {
         	lat1: this.lat1,
             long1: this.long1,
             lat2: this.lat2,
             long2: this.long2,
-            activity: this.activity
+            activity: this.activity,
+            radius: 400
         };
         $.ajax({
         	method: 'POST',
@@ -55,36 +54,32 @@ App.Views.FormView = Backbone.View.extend({
         	data: data
         	}).success(function(queryJSON) {
         			console.log(queryJSON);
-        			console.log("HALLO GUYS");
-        	}).fail(function() {
-        		console.log('failure');
+                    //SECOND AJAX POST IF TOTAL RESULTS = 0
+                    if (queryJSON.total < 5){
+                        data.radius = 600;
+                        $.ajax({
+                            method: 'POST',
+                            url:'/yelps/search', 
+                            data: data
+                        }).success(function(queryJSON){
+                            //THIRD AJAX CALL
+                            if (queryJSON.total < 5){
+                                data.radius = 1200;
+                                $.ajax({
+                                    method: 'POST',
+                                    url:'/yelps/search', 
+                                    data: data
+                                }).success(function(queryJSON){
+                                    console.log(queryJSON)
+                                }).fail(function(){ alert("NOOOOOOOO"); });
+                            }
+                            //END THIRD CALL
+                        }).fail(function(){ alert("NOOOOOOOO"); })
+                    }
+                    //END SECOND POST
+        	}).fail(function() { console.log('failure'); 
         });
-
-        // $.ajax({
-        //     type: "POST",
-        //     url: '/yelps/search',
-        //     data: {
-        //         lat1: this.lat1,
-        //         long1: this.long1,
-        //         lat2: this.lat2,
-        //         long2: this.long2,
-        //         activity: this.activity
-        //     }
-        // }).success(function(results){
-        // 	console.log("query successful, FORM VIEW");
-        // 	console.log(results);
-        //     App.mapView = new App.Views.MapView();
-        //     App.listView = new App.Views.ListView();
-        //     App.mapView.generateMap(results);
-        //     App.mapView.generateMarkers(this.lat1, this.long1, this.lat2, this.long2, results);
-        //     App.listView.generateList(results);
-        //     //ALSO INITIALIZE LISTVIEW
-        // })
-        /*
-        .fail(function(){
-            alert("Invalid Location")
-        })
-        */
     }
+
 })
 

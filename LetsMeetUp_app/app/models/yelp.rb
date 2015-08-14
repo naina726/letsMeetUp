@@ -3,12 +3,13 @@ require 'pry'
 require 'json'
 class YELP
 
-	def self.search(lat1, long1, lat2, long2, activity)
+	def self.search(lat1, long1, lat2, long2, activity, radius)
 		lat1 = lat1
 		long1 = long1
 		lat2 = lat2
 		long2 = long2
 		activity = activity
+		radius = radius
 
 		#COMPUTE MIDPOINT OF LOCATIONS
 		puts lat1
@@ -20,7 +21,7 @@ class YELP
 		puts avgLong
 
 		coords = { latitude: avgLat, longitude: avgLong }
-		params = { term: activity, limit: 5, radius_filter: 400, sort: 2 }
+		params = { term: activity, limit: 5, radius_filter: radius, sort: 2 }
 		locale = { lang: 'en' }
 
 		query = Yelp.client.search_by_coordinates(coords, params, locale)
