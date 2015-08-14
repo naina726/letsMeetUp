@@ -33,17 +33,17 @@ App.Views.MapView = Backbone.View.extend({
 
 	},
 	generateMap: function(){
-		debugger;
-		var mapCanvas = $('#map');
+		var self = this;
+		var mapCanvas = $('#map')[0];
 		var mapOptions = {
-			center: new google.maps.LatLng(this.avgLat, this.avgLong),
+			center: new google.maps.LatLng(self.avgLat, self.avgLong),
 			zoom: 8,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		this.map = new google.maps.Map(mapCanvas, mapOptions);
+		$("#holder").show();
 		//var transitLayer = new google.maps.TransitLayer();
   		//transitLayer.setMap(map);
-
 	},
 	generateMarkers: function() {
 		console.log("MAPVIEW GENERATE MARKERS YAY");
