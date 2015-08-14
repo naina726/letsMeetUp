@@ -163,11 +163,11 @@
 @media screen and (min-width:1200px){
 	#aboutTextBox{
 		width: 80%;
-		height: 350px;
+		height: 400px;
 	}
 	#form{
 		width: 80%;
-		height: 350px;
+		height: 450px;
 	}
 }
 
