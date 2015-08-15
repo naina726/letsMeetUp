@@ -9,8 +9,10 @@ class YelpsController < ApplicationController
 		radius = params[:radius]
 
 		search_results = YELP.search(lat1, long1, lat2, long2, activity, radius)
-		puts "*************************"
+		puts "********************************"
 		p search_results.class
+		p search_results
+		puts "********************************"
 		render json: search_results.businesses
 		#SENDING TO YELP.RB TO USE GEM, 
 		#RETURNS HERE, AND RETURNS JSON TO

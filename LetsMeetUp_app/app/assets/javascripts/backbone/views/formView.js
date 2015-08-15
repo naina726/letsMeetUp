@@ -57,7 +57,9 @@ App.Views.FormView = Backbone.View.extend({
             data: data
         });
 
-        setTimeout(function(){App.mapView.getAvg()}, 500);
+        setTimeout(function(){
+            debugger;
+            App.mapView.getAvg()}, 500);
         setTimeout(function(){App.listView.generateList()}, 500);
     }
 })
