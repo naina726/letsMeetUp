@@ -24,26 +24,25 @@ App.Views.MapView = Backbone.View.extend({
             data: data
         }).done(function(midpoint){
             self.avgLat = midpoint[0];
-            self.avgLong = midpoint[1]
+            self.avgLong = midpoint[1];
+            self.generateMap()
         }).fail(function(){
         	alert("something is wrong")
         })
-       
-        setTimeout(function(){self.generateMarkers()}, 200);
-
 	},
 	generateMap: function(){
-		var self = this;
 		var mapCanvas = $('#map')[0];
 		var mapOptions = {
-			center: new google.maps.LatLng(40.7398850, -73.9900820),
+			center: new google.maps.LatLng(this.avgLat, this.avgLong),
 			zoom: 8,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		this.map = new google.maps.Map(mapCanvas, mapOptions);
-		$("#holder").show();
+		$("#holder").css("visibility", "visible");
+		this.generateMarkers()
 		//var transitLayer = new google.maps.TransitLayer();
   		//transitLayer.setMap(map);
+
 	},
 	generateMarkers: function() {
 		console.log("MAPVIEW GENERATE MARKERS YAY");

@@ -57,11 +57,10 @@ App.Views.FormView = Backbone.View.extend({
             data: data,
             success: function(){
                 console.log(App.collection)
+                App.mapView.getAvg()
+                App.listView.generateList()
             }
         });
-
-        setTimeout(function(){App.mapView.getAvg()}, 500);
-        setTimeout(function(){App.listView.generateList()}, 500);
     }
 })
 

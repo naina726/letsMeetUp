@@ -159,6 +159,7 @@
 	position: absolute;
 	left: 10px;
 	top: 10px;
+	visibility: hidden;
 }
 #map{
 	height: 800px;
@@ -166,7 +167,9 @@
 	position: absolute;
 	left: 10px;
 	top: 10px;
+	
 }
+
 /*#listResults{
 	height: 70px;
 	width: 150px;
@@ -185,4 +188,5 @@
 		height: 450px;
 	}
 }
+
 

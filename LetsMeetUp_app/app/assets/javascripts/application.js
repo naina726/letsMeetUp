@@ -31,12 +31,9 @@ var App = {
 	Routers: {},
 	initialize: function(){
 		this.collection = new App.Collections.VenueCollection();
-		//this.model = new App.Models.Venue()
 		this.showForm = new App.Views.FormView();
-		$("#holder").hide();
 		this.mapView = new App.Views.MapView();
 		this.listView = new App.Views.ListView();
-		this.mapView.generateMap();
 	}
 };
 
