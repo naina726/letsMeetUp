@@ -170,20 +170,23 @@
 	
 }
 
-/*#listResults{
+#listResults{
 	height: 70px;
 	width: 150px;
 	background-color: #f4f4f4;
+	z-index: 
 	-webkit-box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
-}*/
+}
 @media screen and (min-width:1200px){
 	#aboutTextBox{
+		position: relative;
 		width: 80%;
 		height: 400px;
 	}
 	#form{
+		position: relative;
 		width: 80%;
 		height: 450px;
 	}

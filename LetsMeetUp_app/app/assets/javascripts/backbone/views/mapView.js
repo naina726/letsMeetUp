@@ -31,22 +31,62 @@ App.Views.MapView = Backbone.View.extend({
         })
 	},
 	generateMap: function(){
+		var self = this;
 		var mapCanvas = $('#map')[0];
 		var mapOptions = {
 			center: new google.maps.LatLng(this.avgLat, this.avgLong),
-			zoom: 8,
+			zoom: 11,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		this.map = new google.maps.Map(mapCanvas, mapOptions);
 		$("#holder").css("visibility", "visible");
-		this.generateMarkers()
+		setTimeout(function(){self.generateMarkers()}, 400);
 		//var transitLayer = new google.maps.TransitLayer();
   		//transitLayer.setMap(map);
 
 	},
 	generateMarkers: function() {
-		console.log("MAPVIEW GENERATE MARKERS YAY");
+		console.log("MAPVIEW GENERATE MARKERS YAY" + this.lat1);
+		locations = [
+			{lat: this.lat1, lng: this.long1},
+			{lat: this.lat2, lng: this.long2},
+			{lat: this.avgLat, lng: this.avgLong}
+		];
+		var markers = [];
+		var self = this;
+		var midpointImage = '/midpoint.png'
+		var placesImage = '/places.png'
+		for( var i = 0; i < locations.length; i++ ){
+			if (i < 2){
+				addMarkerWithTimeout(locations[i], i * 400)
+			}
+			else{
+				if (i == 2){ addCustomMarker(locations[i], i * 400, midpointImage) }
+				else {addCustomMarker (locations[i], i * 400, placesImage)}
+			}
+		};
+		function addMarkerWithTimeout(position, timeout) {
+			setTimeout(function(){
+				markers.push(new google.maps.Marker({
+					position: position,
+					map: self.map,
+					animation: google.maps.Animation.DROP
+				}));
+			}, timeout);
+		};
+		function addCustomMarker(position, timeout, image) {
+			setTimeout(function(){
+				markers.push(new google.maps.Marker({
+					position: position,
+					map: self.map,
+					animation: google.maps.Animation.DROP,
+					icon: image
+				}));
+			}, timeout);
+		};
+
 	},
+
 	events: {
 		'click #marker': 'viewMore'
 		//jQuery event on div that has been clicked
