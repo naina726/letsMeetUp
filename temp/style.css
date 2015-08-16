@@ -137,23 +137,38 @@
 	-moz-box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
 }
+#listContainer{
+	position: relative;
+	top: 1400px;
+	margin: 0 auto;
+	width: 200px;
+	height: 420px;
+	background-color: #cecece;
+}
 #listResults{
+	top: 10px;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
 	height: 70px;
-	width: 150px;
+	width: 180px;
 	background-color: #f4f4f4;
 	-webkit-box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 20px -1px rgba(0,0,0,0.75);
+	opacity: 1;
+   	transition: opacity 2s;
 
 }
-#bottom{
+/*#bottom{
 	position: relative;
 	bottom: 0px;
 	width: 100%;
 	background-color: white;
 	font-size: 36px;
 	font-weight: 400;
-}
+}*/
 @media screen and (min-width:1200px){
 	#aboutTextBox{
 		width: 80%;
