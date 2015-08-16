@@ -54,12 +54,13 @@ App.Views.FormView = Backbone.View.extend({
 
         App.collection.fetch({
             url: 'yelps/search',
-            data: data
+            data: data,
+            success: function(){
+                console.log(App.collection)
+            }
         });
 
-        setTimeout(function(){
-            debugger;
-            App.mapView.getAvg()}, 500);
+        setTimeout(function(){App.mapView.getAvg()}, 500);
         setTimeout(function(){App.listView.generateList()}, 500);
     }
 })

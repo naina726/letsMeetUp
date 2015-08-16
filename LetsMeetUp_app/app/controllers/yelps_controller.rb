@@ -10,10 +10,15 @@ class YelpsController < ApplicationController
 
 		search_results = YELP.search(lat1, long1, lat2, long2, activity, radius)
 		puts "********************************"
+		puts "********************************\n"
+		search_results = search_results.businesses
 		p search_results.class
 		p search_results
+		puts "\n********************************"
 		puts "********************************"
-		render json: search_results.businesses
+
+
+		render json: search_results
 		#SENDING TO YELP.RB TO USE GEM, 
 		#RETURNS HERE, AND RETURNS JSON TO
 		#INTERNALSEARCH IN FORMVIEW --- THEN CALLS
@@ -28,6 +33,8 @@ class YelpsController < ApplicationController
 		avgLat = (((lat1.to_f)+(lat2.to_f))/2)
 		avgLong = (((long1.to_f)+(long2.to_f))/2)
 		avgCoords = [avgLat, avgLong]
+		puts "AVGCOORDS  "
+		puts avgCoords
 		render json: avgCoords
 	end
 end
