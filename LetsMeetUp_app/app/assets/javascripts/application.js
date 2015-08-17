@@ -33,7 +33,6 @@ var App = {
 		this.collection = new App.Collections.VenueCollection();
 		this.showForm = new App.Views.FormView({collection: this.collection});
 		this.mapView = new App.Views.MapView();
-		this.listView = new App.Views.ListView();
 	}
 };
 

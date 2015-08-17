@@ -38,6 +38,8 @@ App.Views.FormView = Backbone.View.extend({
         setTimeout(function(){self.internalSearch()}, 500);
     },
     internalSearch: function(){
+    $('#listView').empty();
+
         //ajax post to search route in controller
         console.log("INTERNAL SEARCH  " + this.lat1 + " " + this.lat2);
         
@@ -55,12 +57,14 @@ App.Views.FormView = Backbone.View.extend({
         App.collection.fetch({
             url: 'yelps/search',
             data: data,
+            reset: true,
             success: function(){
-                console.log(App.collection)
-                App.mapView.getAvg()
-                App.listView.generateList()
+                console.log(App.collection);
+                App.mapView.getAvg();
+                var listView = new App.Views.ListView({collection: App.collection})
             }
         });
+        
     }
 })
 
