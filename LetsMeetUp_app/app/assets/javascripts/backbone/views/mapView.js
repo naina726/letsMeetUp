@@ -47,8 +47,6 @@ App.Views.MapView = Backbone.View.extend({
 	},
 	generateMarkers: function() {
 		console.log("MAPVIEW GENERATE MARKERS YAY" + this.lat1);
-		var labels = '12345';
-		var labelIndex = 0;
 		var yelpCoordinates = [];
 		for (var j = 0; j < App.collection.models.length; j++ ) {
 			yelpCoordinates.push(App.collection.models[j].attributes.hash.location.coordinate.latitude);
@@ -105,8 +103,7 @@ App.Views.MapView = Backbone.View.extend({
 					position: position,
 					map: self.map,
 					animation: google.maps.Animation.DROP,
-					icon: image,
-					label: labels[labelIndex++]
+					icon: image
 				}));
 			}, timeout);
 		};
