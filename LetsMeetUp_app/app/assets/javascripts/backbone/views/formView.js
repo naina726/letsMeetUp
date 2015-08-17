@@ -65,7 +65,10 @@ App.Views.FormView = Backbone.View.extend({
             success: function(){
                 console.log(App.collection);
                 App.mapView.getAvg();
-                var listView = new App.Views.ListView({collection: App.collection})
+                var listView = new App.Views.ListView({collection: App.collection});
+                    $('html, body').animate({
+                     scrollTop: $("#map").offset().top
+                    }, 2000);
             }
         });
         
