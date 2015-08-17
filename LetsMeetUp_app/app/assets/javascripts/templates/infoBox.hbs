@@ -1,0 +1,13 @@
+<div id='popup'>
+	<h2>{{name}}</h2>
+	<p>{{location.address}}</p>
+	<p>Between {{location.cross_streets}}</p>
+	<p>{{display_phone}}</p>
+	<p>Yelp Rating: {{rating}}</p>
+
+	{{#if is_closed}} 
+	     <p class="open">{{name}} is closed.</p>
+	  {{else}}
+		<p class="open">{{name}} is open.</p>
+	{{/if}}
+</div>

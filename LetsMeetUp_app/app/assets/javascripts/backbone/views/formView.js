@@ -68,7 +68,7 @@ App.Views.FormView = Backbone.View.extend({
                 var listView = new App.Views.ListView({collection: App.collection});
                     $('html, body').animate({
                      scrollTop: $("#map").offset().top
-                    }, 2000);
+                    }, 1500);
             }
         });
         
