@@ -38,8 +38,6 @@ App.Views.FormView = Backbone.View.extend({
         setTimeout(function(){self.internalSearch()}, 500);
     },
     internalSearch: function(){
-    $('#listView').empty();
-
         //ajax post to search route in controller
         console.log("INTERNAL SEARCH  " + this.lat1 + " " + this.lat2);
         
