@@ -47,15 +47,26 @@ App.Views.MapView = Backbone.View.extend({
 	},
 	generateMarkers: function() {
 		console.log("MAPVIEW GENERATE MARKERS YAY" + this.lat1);
+		var yelpCoordinates = [];
+		for (var j = 0; j < App.collection.models.length; j++ ) {
+			yelpCoordinates.push(App.collection.models[j].attributes.hash.location.coordinate.latitude);
+			yelpCoordinates.push(App.collection.models[j].attributes.hash.location.coordinate.longitude);
+
+		};
 		locations = [
 			{lat: this.lat1, lng: this.long1},
 			{lat: this.lat2, lng: this.long2},
-			{lat: this.avgLat, lng: this.avgLong}
+			{lat: this.avgLat, lng: this.avgLong},
+			{lat: yelpCoordinates[0], lng: yelpCoordinates[1]},
+			{lat: yelpCoordinates[2], lng: yelpCoordinates[3]},
+			{lat: yelpCoordinates[4], lng: yelpCoordinates[5]},
+			{lat: yelpCoordinates[6], lng: yelpCoordinates[7]},
+			{lat: yelpCoordinates[8], lng: yelpCoordinates[9]}
 		];
 		var markers = [];
 		var self = this;
-		var midpointImage = '/midpoint.png'
-		var placesImage = '/places.png'
+		var midpointImage = '/midpoint.png';
+		var placesImage = '/places.png';
 		for( var i = 0; i < locations.length; i++ ){
 			if (i < 2){
 				addMarkerWithTimeout(locations[i], i * 200)
