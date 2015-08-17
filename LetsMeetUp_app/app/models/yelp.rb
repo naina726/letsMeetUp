@@ -43,12 +43,14 @@ class YELP
 			params[:radius_filter] = 750
 			query = Yelp.client.search_by_coordinates(coords, params, locale)
 		end 
-
 		if (query.total < 10)
 			params[:radius_filter] = 1300
 			query = Yelp.client.search_by_coordinates(coords, params, locale)
 		end 
-
+		if (query.total < 10)
+			params[:radius_filter] = 1600
+			query = Yelp.client.search_by_coordinates(coords, params, locale)
+		end 
 		if (query.total == 0)
 			alert "No results found in a very large radius... \nPlease try a different search"
 		end

@@ -2,6 +2,7 @@ App.Views.MapView = Backbone.View.extend({
 	el: 'map',
 	initialize: function() {
 		console.log("NEW Map VIEW CREATED");
+		this.markers = [];
 	},
 	storeShit: function(lat1, long1, lat2, long2){
 		this.lat1 = lat1;
@@ -35,7 +36,7 @@ App.Views.MapView = Backbone.View.extend({
 		var mapCanvas = $('#map')[0];
 		var mapOptions = {
 			center: new google.maps.LatLng(this.avgLat, this.avgLong),
-			zoom: 14,
+			zoom: 13,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		this.map = new google.maps.Map(mapCanvas, mapOptions);
@@ -47,39 +48,16 @@ App.Views.MapView = Backbone.View.extend({
 	},
 	generateMarkers: function() {
 		console.log("MAPVIEW GENERATE MARKERS YAY" + this.lat1);
-		var yelpCoordinates = [];
-		for (var j = 0; j < App.collection.models.length; j++ ) {
-			yelpCoordinates.push(App.collection.models[j].attributes.hash.location.coordinate.latitude);
-			yelpCoordinates.push(App.collection.models[j].attributes.hash.location.coordinate.longitude);
-
-		};
-		locations = [
+		var midpointImage = '/midpoint.png';
+		var self = this;
+		this.markers = [];
+		this.locations = [
 			{lat: this.lat1, lng: this.long1},
 			{lat: this.lat2, lng: this.long2},
 			{lat: this.avgLat, lng: this.avgLong},
-			{lat: yelpCoordinates[0], lng: yelpCoordinates[1]},
-			{lat: yelpCoordinates[2], lng: yelpCoordinates[3]},
-			{lat: yelpCoordinates[4], lng: yelpCoordinates[5]},
-			{lat: yelpCoordinates[6], lng: yelpCoordinates[7]},
-			{lat: yelpCoordinates[8], lng: yelpCoordinates[9]}
 		];
-		this.markers = [];
-		var self = this;
-		var midpointImage = '/midpoint.png';
-		var placesImage = '/places.png';
-		for( var i = 0; i < locations.length; i++ ){
-			if (i < 2){
-				addMarkerWithTimeout(locations[i], i * 200)
-			}
-			else if (i == 2){ 
-				addMidpointMarker(locations[i], i * 200, midpointImage) 
-			}
-			else {
-				addCustomMarker (locations[i], i * 200, placesImage)
-			}
-		};
-		this.reZoom()
-		function addMarkerWithTimeout(position, timeout) {
+
+	 	function addMarkerWithTimeout (position, timeout) {
 			setTimeout(function(){
 				self.markers.push(new google.maps.Marker({
 					position: position,
@@ -88,34 +66,75 @@ App.Views.MapView = Backbone.View.extend({
 				}));
 			}, timeout);
 		};
-		function addMidpointMarker(position, timeout, image) {
-			setTimeout(function(){
-				self.markers.push(new google.maps.Marker({
-					position: position,
-					map: self.map,
-					animation: google.maps.Animation.DROP,
-					icon: image
-				}));
-			}, timeout);
-		};
-		function addCustomMarker(position, timeout, image) {
-			setTimeout(function(){
-				self.markers.push(new google.maps.Marker({
-					position: position,
-					map: self.map,
-					animation: google.maps.Animation.DROP,
-					icon: image
-				}));
-			}, timeout);
-		};
 
+		addMarkerWithTimeout(this.locations[0], 400);
+		addMarkerWithTimeout(this.locations[1], 600);
+
+		setTimeout(function(){
+			self.markers.push(new google.maps.Marker({
+				position: self.locations[2],
+				map: self.map,
+				animation: google.maps.Animation.DROP,
+				icon: midpointImage
+			}));
+		}, 800);
+
+		setTimeout(function(){
+			App.collection.each(self.renderYelpPins, self)
+		}, 1400);
+
+		//this.reZoom();
 	},
+
+	renderYelpPins : function(model){
+		var loc = {
+			lat: model.attributes.hash.location.coordinate.latitude,
+			lng: model.attributes.hash.location.coordinate.longitude
+		}
+
+		var placesImage = '/places.png';
+		var self = this;
+
+		var newMarker = new google.maps.Marker({
+			position: loc,
+			map: self.map,
+			animation: google.maps.Animation.DROP,
+			icon: placesImage
+		});
+
+		//NEWINFOBOX IS RENDERED HTML FROM HBS TEMPLATE
+		//THIS IS MODEL SPECIFIC
+  		var newInfoBox = new App.Views.InfoView({model: model});
+  		var contentString = newInfoBox.render()
+
+
+  		//SETS INFOWINDOW TO GOOGLE MAPS BOX
+		var infowindow = new google.maps.InfoWindow({
+    		content: contentString,
+    		maxWidth: 200
+  		});
+
+		//ISOLATE ASSOCIATED DIV
+		var associatedDiv = $("#listResults").find('[data-id="' + model.attributes.hash.id + '"]');
+
+		//ONCLICK FOR MARKER
+		newMarker.addListener('click', function() {
+    		infowindow.open(this.map, newMarker);
+    		associatedDiv.css("border","2px solid yellow");
+
+  		});
+
+		this.markers.push(newMarker)
+	},
+
 	reZoom: function(){
 		console.log("REZOOM");
 		console.log(this.markers)
+		var self = this;
 		var bounds = new google.maps.LatLngBounds();
-		for(var k=0; k < this.markers.length; k++) {
- 			bounds.extend(this.markers[k].getPosition());
+		for(var k=0; k < self.markers.length; k++) {
+			console.log(self.markers[k])
+ 			bounds.extend(self.markers[k].getPosition());
 		};
 		this.map.setCenter(bounds.getCenter());
 		this.map.fitBounds(bounds);
