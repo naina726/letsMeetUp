@@ -5,11 +5,6 @@ App.Views.SingleListView = Backbone.View.extend({
 		this.render();
 	},
 	render: function() {
-		this.$el.html(this.template(this.model.toJSON().hash));
-
-
-
-
-		
+		this.$el.html(this.template(this.model.toJSON().hash));	
 	}
 })

@@ -18,41 +18,39 @@ class YELP
 		coords = { latitude: avgLat, longitude: avgLong }
 		locale = { lang: 'en' }
 		
-
-
 		#IF ACTIVITY TO SEARCH FOR CONTAINS RESTAURANTS OR FOOD, CHANGE PARAMS
 		if ((activity.include? "food") || (activity.include? "restaurant"))
-			params = { term: activity, limit: 5, radius_filter: radius, sort: 2, category_filter: 'food,restaurants'}
+			params = { term: activity, limit: 10, radius_filter: radius, sort: 2, category_filter: 'food,restaurants'}
 		#IF ACTIVITY CONTAINS PIZZA, CHANGE PARAMS
 		elsif (activity.include? "pizza")
-			params = { term: activity, limit: 5, radius_filter: radius, sort: 2, category_filter: 'pizza'}
+			params = { term: activity, limit: 10, radius_filter: radius, sort: 2, category_filter: 'pizza'}
 		#IF ACTIVITY CONTAINS COFFEE, CHANGE PARAMS
 		elsif (activity.include? "coffee")
-			params = { term: activity, limit: 5, radius_filter: radius, sort: 2, category_filter: 'coffee'}
+			params = { term: activity, limit: 10, radius_filter: radius, sort: 2, category_filter: 'coffee'}
 		#IF ACTIVITY CONTAINS BAR, CHANGE PARAMS
 		elsif (activity.include? "bar")
-			params = { term: activity, limit: 5, radius_filter: radius, sort: 2, category_filter: 'bars'}
+			params = { term: activity, limit: 10, radius_filter: radius, sort: 2, category_filter: 'bars'}
 		#IF ACTIVITY CONTAINS PARKS, CHANGE PARAMS
 		elsif (activity.include? "park")
-			params = { term: activity, limit: 5, radius_filter: radius, sort: 2, category_filter: 'parks'}
+			params = { term: activity, limit: 10, radius_filter: radius, sort: 2, category_filter: 'parks'}
 		#ELSE, DEFAULT:
 		else
-			params = { term: activity, limit: 5, radius_filter: radius, sort: 2 }
+			params = { term: activity, limit: 10, radius_filter: radius, sort: 2 }
 		end
 
 		query = Yelp.client.search_by_coordinates(coords, params, locale)
-		if (query.total < 5)
-			params[:radius_filter] = 600
+		if (query.total < 10)
+			params[:radius_filter] = 750
 			query = Yelp.client.search_by_coordinates(coords, params, locale)
 		end 
 
-		if (query.total < 5)
-			params[:radius_filter] = 1200
+		if (query.total < 10)
+			params[:radius_filter] = 1300
 			query = Yelp.client.search_by_coordinates(coords, params, locale)
 		end 
 
 		if (query.total == 0)
-			p "NOTHING FOUND"
+			alert "No results found in a very large radius... \nPlease try a different search"
 		end
 		
 		return query

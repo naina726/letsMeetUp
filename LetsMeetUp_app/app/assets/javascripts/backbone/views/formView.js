@@ -10,7 +10,13 @@ App.Views.FormView = Backbone.View.extend({
         this.$el.html(this.template());
     },
     events: {
-        'click button': 'convert'
+        'click button': 'convert',
+        'keyup #searchActivity': 'keyPressHandler'
+    },
+    keyPressHandler : function(event) {
+        if(event.keyCode == 13) {
+            $('#submit').click();
+        }
     },
     convert: function(){
         var add1 = $('#addressOne').val();
@@ -49,7 +55,7 @@ App.Views.FormView = Backbone.View.extend({
             lat2: this.lat2,
             long2: this.long2,
             activity: this.activity,
-            radius: 400
+            radius: 500
         };
 
         App.collection.fetch({
