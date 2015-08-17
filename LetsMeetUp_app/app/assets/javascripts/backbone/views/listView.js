@@ -5,8 +5,8 @@ App.Views.ListView = Backbone.View.extend({
 		this.renderAll()
 	},
 	renderAll: function  () {
-		$('#listItem').remove();
-		this.collection.each(this.renderOne, this)
+	$('#listItem').remove();
+	this.collection.each(this.renderOne, this)
 	}, 
 	renderOne: function  (model) {
 		var newView = new App.Views.SingleListView({model: model});
