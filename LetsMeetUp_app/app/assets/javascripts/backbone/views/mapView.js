@@ -2,6 +2,7 @@ App.Views.MapView = Backbone.View.extend({
 	el: 'map',
 	initialize: function() {
 		console.log("NEW Map VIEW CREATED");
+		this.markers = [];
 	},
 	storeShit: function(lat1, long1, lat2, long2){
 		this.lat1 = lat1;
@@ -34,8 +35,8 @@ App.Views.MapView = Backbone.View.extend({
 		var self = this;
 		var mapCanvas = $('#map')[0];
 		var mapOptions = {
-			center: new google.maps.LatLng(this.avgLat, this.avgLong),
-			zoom: 14,
+			// center: new google.maps.LatLng(this.avgLat, this.avgLong),
+			// zoom: 14,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		this.map = new google.maps.Map(mapCanvas, mapOptions);
@@ -61,9 +62,14 @@ App.Views.MapView = Backbone.View.extend({
 			{lat: yelpCoordinates[2], lng: yelpCoordinates[3]},
 			{lat: yelpCoordinates[4], lng: yelpCoordinates[5]},
 			{lat: yelpCoordinates[6], lng: yelpCoordinates[7]},
-			{lat: yelpCoordinates[8], lng: yelpCoordinates[9]}
+			{lat: yelpCoordinates[8], lng: yelpCoordinates[9]},
+			{lat: yelpCoordinates[10], lng: yelpCoordinates[11]},
+			{lat: yelpCoordinates[12], lng: yelpCoordinates[13]},
+			{lat: yelpCoordinates[14], lng: yelpCoordinates[15]},
+			{lat: yelpCoordinates[16], lng: yelpCoordinates[17]},
+			{lat: yelpCoordinates[18], lng: yelpCoordinates[19]}
 		];
-		this.markers = [];
+		//this.markers = [];
 		var self = this;
 		var midpointImage = '/midpoint.png';
 		var placesImage = '/places.png';
@@ -111,11 +117,14 @@ App.Views.MapView = Backbone.View.extend({
 
 	},
 	reZoom: function(){
+		debugger;
 		console.log("REZOOM");
 		console.log(this.markers)
+		var self = this;
 		var bounds = new google.maps.LatLngBounds();
-		for(var k=0; k < this.markers.length; k++) {
- 			bounds.extend(this.markers[k].getPosition());
+		for(var k=0; k < self.markers.length; k++) {
+			console.log(self.markers[k])
+ 			bounds.extend(self.markers[k].getPosition());
 		};
 		this.map.setCenter(bounds.getCenter());
 		this.map.fitBounds(bounds);

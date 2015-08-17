@@ -10,6 +10,9 @@ App.Views.ListView = Backbone.View.extend({
 	}, 
 	renderOne: function  (model) {
 		var newView = new App.Views.SingleListView({model: model});
-		this.$el.append(newView.el)
+		this.$el.append(newView.el);
+
+		//try to set the data attribute of the div
+		$(newView.el).attr('data-lat', model.toJSON().hash.location.coordinate.latitude);
 	}
 });
