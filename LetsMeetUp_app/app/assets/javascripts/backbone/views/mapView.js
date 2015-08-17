@@ -35,7 +35,7 @@ App.Views.MapView = Backbone.View.extend({
 		var mapCanvas = $('#map')[0];
 		var mapOptions = {
 			center: new google.maps.LatLng(this.avgLat, this.avgLong),
-			zoom: 11,
+			zoom: 14,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		this.map = new google.maps.Map(mapCanvas, mapOptions);
@@ -63,7 +63,7 @@ App.Views.MapView = Backbone.View.extend({
 			{lat: yelpCoordinates[6], lng: yelpCoordinates[7]},
 			{lat: yelpCoordinates[8], lng: yelpCoordinates[9]}
 		];
-		var markers = [];
+		this.markers = [];
 		var self = this;
 		var midpointImage = '/midpoint.png';
 		var placesImage = '/places.png';
@@ -78,9 +78,10 @@ App.Views.MapView = Backbone.View.extend({
 				addCustomMarker (locations[i], i * 200, placesImage)
 			}
 		};
+		this.reZoom()
 		function addMarkerWithTimeout(position, timeout) {
 			setTimeout(function(){
-				markers.push(new google.maps.Marker({
+				self.markers.push(new google.maps.Marker({
 					position: position,
 					map: self.map,
 					animation: google.maps.Animation.DROP
@@ -89,7 +90,7 @@ App.Views.MapView = Backbone.View.extend({
 		};
 		function addMidpointMarker(position, timeout, image) {
 			setTimeout(function(){
-				markers.push(new google.maps.Marker({
+				self.markers.push(new google.maps.Marker({
 					position: position,
 					map: self.map,
 					animation: google.maps.Animation.DROP,
@@ -99,7 +100,7 @@ App.Views.MapView = Backbone.View.extend({
 		};
 		function addCustomMarker(position, timeout, image) {
 			setTimeout(function(){
-				markers.push(new google.maps.Marker({
+				self.markers.push(new google.maps.Marker({
 					position: position,
 					map: self.map,
 					animation: google.maps.Animation.DROP,
@@ -109,7 +110,17 @@ App.Views.MapView = Backbone.View.extend({
 		};
 
 	},
-
+	reZoom: function(){
+		console.log("REZOOM");
+		console.log(this.markers)
+		var bounds = new google.maps.LatLngBounds();
+		for(var k=0; k < this.markers.length; k++) {
+ 			bounds.extend(this.markers[k].getPosition());
+		};
+		this.map.setCenter(bounds.getCenter());
+		this.map.fitBounds(bounds);
+		this.map.setZoom((this.map.getZoom())-1); 
+	},
 	events: {
 		'click #marker': 'viewMore'
 		//jQuery event on div that has been clicked
