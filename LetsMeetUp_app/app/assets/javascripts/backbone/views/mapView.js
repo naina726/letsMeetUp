@@ -47,6 +47,8 @@ App.Views.MapView = Backbone.View.extend({
 	},
 	generateMarkers: function() {
 		console.log("MAPVIEW GENERATE MARKERS YAY" + this.lat1);
+		var labels = '12345';
+		var labelIndex = 0;
 		var yelpCoordinates = [];
 		for (var j = 0; j < App.collection.models.length; j++ ) {
 			yelpCoordinates.push(App.collection.models[j].attributes.hash.location.coordinate.latitude);
@@ -71,9 +73,11 @@ App.Views.MapView = Backbone.View.extend({
 			if (i < 2){
 				addMarkerWithTimeout(locations[i], i * 200)
 			}
-			else{
-				if (i == 2){ addCustomMarker(locations[i], i * 200, midpointImage) }
-				else {addCustomMarker (locations[i], i * 200, placesImage)}
+			else if (i == 2){ 
+				addMidpointMarker(locations[i], i * 200, midpointImage) 
+			}
+			else {
+				addCustomMarker (locations[i], i * 200, placesImage)
 			}
 		};
 		function addMarkerWithTimeout(position, timeout) {
@@ -85,13 +89,24 @@ App.Views.MapView = Backbone.View.extend({
 				}));
 			}, timeout);
 		};
-		function addCustomMarker(position, timeout, image) {
+		function addMidpointMarker(position, timeout, image) {
 			setTimeout(function(){
 				markers.push(new google.maps.Marker({
 					position: position,
 					map: self.map,
 					animation: google.maps.Animation.DROP,
 					icon: image
+				}));
+			}, timeout);
+		};
+		function addCustomMarker(position, timeout, image) {
+			setTimeout(function(){
+				markers.push(new google.maps.Marker({
+					position: position,
+					map: self.map,
+					animation: google.maps.Animation.DROP,
+					icon: image,
+					label: labels[labelIndex++]
 				}));
 			}, timeout);
 		};
