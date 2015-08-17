@@ -40,7 +40,7 @@ App.Views.MapView = Backbone.View.extend({
 		};
 		this.map = new google.maps.Map(mapCanvas, mapOptions);
 		$("#holder").css("visibility", "visible");
-		setTimeout(function(){self.generateMarkers()}, 400);
+		setTimeout(function(){self.generateMarkers()}, 200);
 		//var transitLayer = new google.maps.TransitLayer();
   		//transitLayer.setMap(map);
 
@@ -58,11 +58,11 @@ App.Views.MapView = Backbone.View.extend({
 		var placesImage = '/places.png'
 		for( var i = 0; i < locations.length; i++ ){
 			if (i < 2){
-				addMarkerWithTimeout(locations[i], i * 400)
+				addMarkerWithTimeout(locations[i], i * 200)
 			}
 			else{
-				if (i == 2){ addCustomMarker(locations[i], i * 400, midpointImage) }
-				else {addCustomMarker (locations[i], i * 400, placesImage)}
+				if (i == 2){ addCustomMarker(locations[i], i * 200, midpointImage) }
+				else {addCustomMarker (locations[i], i * 200, placesImage)}
 			}
 		};
 		function addMarkerWithTimeout(position, timeout) {
