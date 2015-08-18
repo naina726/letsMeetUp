@@ -46,8 +46,13 @@ gem 'httparty'
 
 #awesome-print THIS IS STUPID BUT KEEPS GIVING CONSOLE WARNINGS
 gem 'awesome_print'
+
+group :production do
 # Use Unicorn as the app server
-# gem 'unicorn'
+	gem 'unicorn'
+	gem 'unicorn-rails'
+
+end
 
 gem 'rails_12factor', group: :production
 
