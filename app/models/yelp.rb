@@ -1,5 +1,4 @@
 require 'yelp' 
-require 'pry'
 require 'json'
 class YELP
 
