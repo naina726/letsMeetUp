@@ -83,7 +83,9 @@ App.Views.MapView = Backbone.View.extend({
 			App.collection.each(self.renderYelpPins, self)
 		}, 1400);
 
-		//this.reZoom();
+		setTimeout(function(){
+			self.reZoom();
+		}, 2000);
 	},
 
 	renderYelpPins : function(model){
@@ -99,7 +101,8 @@ App.Views.MapView = Backbone.View.extend({
 			position: loc,
 			map: self.map,
 			animation: google.maps.Animation.DROP,
-			icon: placesImage
+			icon: placesImage,
+			model: model
 		});
 
 		//NEWINFOBOX IS RENDERED HTML FROM HBS TEMPLATE
@@ -138,7 +141,7 @@ App.Views.MapView = Backbone.View.extend({
 		};
 		this.map.setCenter(bounds.getCenter());
 		this.map.fitBounds(bounds);
-		this.map.setZoom((this.map.getZoom())-1); 
+		//this.map.setZoom((this.map.getZoom())-1); 
 	},
 	events: {
 		'click #marker': 'viewMore'
