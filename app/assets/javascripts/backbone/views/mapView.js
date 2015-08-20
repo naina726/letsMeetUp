@@ -85,7 +85,7 @@ App.Views.MapView = Backbone.View.extend({
 
 		setTimeout(function(){
 			self.reZoom();
-		}, 2000);
+		}, 2500);
 	},
 
 	renderYelpPins : function(model){
