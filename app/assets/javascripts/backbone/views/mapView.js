@@ -64,6 +64,7 @@ App.Views.MapView = Backbone.View.extend({
 					map: self.map,
 					animation: google.maps.Animation.DROP
 				}));
+				console.log("THIS SHOULD BE FIRST");
 			}, timeout);
 		};
 
@@ -77,15 +78,18 @@ App.Views.MapView = Backbone.View.extend({
 				animation: google.maps.Animation.DROP,
 				icon: midpointImage
 			}));
+			console.log("THIS SHOULD BE SECOND");
 		}, 800);
 
 		setTimeout(function(){
 			App.collection.each(self.renderYelpPins, self)
+			console.log("THIS SHOULD BE THIRD");
 		}, 1400);
 
 		setTimeout(function(){
 			self.reZoom();
-		}, 5000);
+			console.log("THIS SHOULD BE FOURTH");
+		}, 3000);
 	},
 
 	renderYelpPins : function(model){
