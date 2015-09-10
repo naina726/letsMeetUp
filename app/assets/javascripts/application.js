@@ -35,6 +35,9 @@ var App = {
 		this.mapView = new App.Views.MapView();
 		$('#listItem').remove();
 
+		$('#main').click(function(){
+			scrollTop: $("#form").offset().top
+		});
 	}
 };
 
